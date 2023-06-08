@@ -1,0 +1,26 @@
+Certainly! Here's an example of a function called generateToken that uses the jsonwebtoken library to generate a JWT token:
+
+
+const jwt = require('jsonwebtoken');
+
+function generateToken(userId, secretKey) {
+  const payload = {
+    userId: userId
+  };
+
+  const options = {
+    expiresIn: '1h' // Token expiration time
+  };
+
+  const token = jwt.sign(payload, secretKey, options);
+  return token;
+}
+In this function, we first import the jsonwebtoken library. Then, we define the generateToken function that takes a userId and a secretKey as parameters.
+
+Inside the function, we create a payload object that contains the userId as its property. This payload will be encoded into the JWT token.
+
+We also define an options object that specifies the expiration time for the token. In this example, the token will expire after 1 hour. You can customize this value as needed.
+
+Finally, we use the jwt.sign method to generate the token by passing in the payload, secretKey, and options as arguments. The generated token is then returned.
+
+Make sure to install the jsonwebtoken library by running npm install jsonwebtoken before using this code

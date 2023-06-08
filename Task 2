@@ -1,0 +1,27 @@
+
+ 
+
+
+ Here's an example of an Express.js route that handles a GET request to '/products' and returns a JSON response containing all products from the Mongoose "Product" collection, including only the name and price fields for each product.
+
+javascript
+Copy code
+const express = require('express');
+const router = express.Router();
+const Product = require('../models/Product');
+
+router.get('/products', async (req, res) => {
+  try {
+    const products = await Product.find({}, 'name price'); // Retrieve only name and price fields
+
+    res.json(products);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+module.exports = router;
+In this example, we assume you have a Mongoose model named "Product" that represents your product collection. The Product model should be defined in a separate file, and you'll need to require it at the beginning of your route file.
+
+Ensure that you have Mongoose properly set up and connected to your database before using this route. Also, make sure to modify the file paths and other necessary parts of the code to fit your project structure.
